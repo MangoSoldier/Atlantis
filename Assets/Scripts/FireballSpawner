@@ -1,0 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FireballSpawner : MonoBehaviour {
+    public GameObject fireball;
+    public GameObject fireballSpawn;
+    public float fireRate = 0.5f;
+    private float myTime = 0.0f;
+    private void OnTriggerStay2D(Collider2D col)
+    {
+        myTime += Time.deltaTime;
+        if(myTime > fireRate)
+        {
+            myTime = 0.0f;
+            Instantiate(fireball, fireballSpawn.transform.position, fireballSpawn.transform.rotation);
+        }
+    }
+}
